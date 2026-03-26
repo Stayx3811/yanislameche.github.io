@@ -28,23 +28,33 @@
 }
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;transition:background .3s,color .3s}
+
+
 /* LIGHT MODE */
-body.light{--bg:#f4f5f7;--bg2:#eaecf0;--surface:#ffffff;--surface2:#f0f1f4;--border:#dde0e8;--border2:#c8ccd8;--text:#14171f;--text2:#4a5068;--text3:#8a91a8;--shadow:0 4px 32px rgba(0,0,0,0.10)}
-body.light nav{background:rgba(244,245,247,0.92)}
+body.light{--bg:#f0f2f7;--bg2:#e4e7ef;--surface:#ffffff;--surface2:#f0f1f6;--border:#d0d4e2;--border2:#b8bece;--text:#12151f;--text2:#3d4560;--text3:#7a83a0;--shadow:0 4px 32px rgba(0,0,0,0.10)}
+body.light nav{background:rgba(240,242,247,0.93)}
 body.light #contact{background:var(--bg2)}
 body.light footer{background:var(--bg2);border-top:1px solid var(--border)}
-body.light .hblob{opacity:.1}
-/* NAV EXTRA BUTTONS */
+body.light .hblob{opacity:.08}
+/* NAV EXTRAS */
 .nav-extras{display:flex;align-items:center;gap:8px}
-.btn-theme,.btn-lang{display:inline-flex;align-items:center;gap:5px;background:var(--surface);border:1px solid var(--border);border-radius:50px;padding:5px 12px;font-size:.78rem;font-weight:500;color:var(--text2);cursor:pointer;transition:border-color .2s,color .2s,background .2s;font-family:'DM Sans',sans-serif;white-space:nowrap}
-.btn-theme:hover,.btn-lang:hover{border-color:var(--accent);color:var(--accent)}
-.btn-theme svg,.btn-lang svg{width:13px;height:13px;flex-shrink:0}
+.btn-theme{display:inline-flex;align-items:center;gap:5px;background:var(--surface);border:1px solid var(--border);border-radius:50px;padding:5px 13px;font-size:.78rem;font-weight:500;color:var(--text2);cursor:pointer;transition:border-color .2s,color .2s,background .2s;font-family:'DM Sans',sans-serif;white-space:nowrap}
+.btn-theme:hover{border-color:var(--accent);color:var(--accent)}
+.btn-theme svg{width:13px;height:13px;flex-shrink:0}
+/* Google Translate custom button */
+#gt-wrap{display:inline-flex;align-items:center;gap:5px;background:var(--surface);border:1px solid var(--border);border-radius:50px;padding:5px 13px;font-size:.78rem;font-weight:500;color:var(--text2);cursor:pointer;transition:border-color .2s,color .2s;white-space:nowrap;position:relative}
+#gt-wrap:hover{border-color:var(--accent);color:var(--accent)}
+#gt-wrap svg{width:13px;height:13px;flex-shrink:0}
+/* Hide Google Translate default bar */
+.goog-te-banner-frame,.skiptranslate{display:none!important}
+body{top:0!important}
+.goog-te-gadget{font-size:0!important}
+.goog-te-gadget select{display:none!important}
 /* FOOTER LINKS */
 .footer-links{display:flex;justify-content:center;flex-wrap:wrap;gap:24px;margin-bottom:14px}
 .footer-links a{color:var(--text3);text-decoration:none;font-size:.8rem;display:inline-flex;align-items:center;gap:5px;transition:color .2s}
 .footer-links a:hover{color:var(--accent)}
 .footer-links a svg{width:12px;height:12px;opacity:.6}
-
 /* ═══════════ INTRO ═══════════ */
 #intro{position:fixed;inset:0;z-index:9999;background:#080d14;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
 #intro::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,198,162,0.025) 2px,rgba(0,198,162,0.025) 4px);pointer-events:none;z-index:2}
@@ -288,34 +298,37 @@ footer{background:var(--bg2);border-top:1px solid var(--border);text-align:cente
 <nav>
   <a class="nlogo" href="#hero">Yanis<span>.</span></a>
   <ul>
-    <li><a href="#skills" data-fr="Compétences" data-en="Skills">Compétences</a></li>
-    <li><a href="#projects-uni" data-fr="Projets" data-en="Projects">Projets</a></li>
-    <li><a href="#experience" data-fr="Parcours" data-en="Journey">Parcours</a></li>
-    <li><a href="#certifications" data-fr="Certifs" data-en="Certs">Certifs</a></li>
+    <li><a href="#skills">Compétences</a></li>
+    <li><a href="#projects-uni">Projets</a></li>
+    <li><a href="#experience">Parcours</a></li>
+    <li><a href="#certifications">Certifs</a></li>
     <li><a href="#github">GitHub</a></li>
-    <li><a href="#contact" class="ncta" data-fr="Contact" data-en="Contact">Contact</a></li>
+    <li><a href="#contact" class="ncta">Contact</a></li>
   </ul>
   <div class="nav-extras">
     <button class="btn-theme" id="themeBtn" onclick="toggleTheme()">
       <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
       <span id="themeLabel">Clair</span>
     </button>
-    <button class="btn-lang" id="langBtn" onclick="toggleLang()">
+    <div id="gt-wrap" onclick="triggerTranslate()">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-      <span id="langLabel">EN</span>
-    </button>
+      <span id="gtLabel">EN</span>
+    </div>
+    <!-- Google Translate element (hidden) -->
+    <div id="google_translate_element" style="display:none"></div>
   </div>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
   <div class="hblob b1"></div><div class="hblob b2"></div>
-  <div class="htag"><span class="tdot"></span><span data-fr="Stage trouvé · AMGCOM — Guilherand-Granges" data-en="Internship found · AMGCOM — Guilherand-Granges">Stage trouvé · AMGCOM — Guilherand-Granges</span></div>
+  <div class="htag"><span class="tdot"></span>Stage trouvé · AMGCOM — Guilherand-Granges</div>
   <h1 class="hname">
     Yanis<br>
     <em id="cipherTarget">LAMECHE</em>
   </h1>
-  <p class="hsub" data-fr="Étudiant en 2ᵉ année de BUT Réseaux &amp; Télécommunications — spécialité Cybersécurité à l'IUT de Valence.<br>Passionné par la sécurité réseau, le pentesting, les infrastructures et le bricolage technologique." data-en="2nd year student in Network &amp; Telecommunications — Cybersecurity track at IUT Valence.<br>Passionate about network security, pentesting, infrastructures and tech tinkering.">Étudiant en 2ᵉ année de BUT Réseaux &amp; Télécommunications — spécialité Cybersécurité à l'IUT de Valence.<br>
+  <p class="hsub">
+    Étudiant en 2ᵉ année de BUT Réseaux &amp; Télécommunications — spécialité Cybersécurité à l'IUT de Valence.<br>
     Passionné par la sécurité réseau, le pentesting, les infrastructures et le bricolage technologique.
   </p>
   <div class="hpills">
@@ -325,24 +338,24 @@ footer{background:var(--bg2);border-top:1px solid var(--border);text-align:cente
     <span class="pill">📍 Bourg-en-Bresse / Valence</span>
   </div>
   <div class="hbtns">
-    <a href="#contact" class="btp" data-fr="Me contacter" data-en="Contact me">Me contacter <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-    <a href="#projects-uni" class="bto" data-fr="Voir mes projets" data-en="See my projects">Voir mes projets</a>
+    <a href="#contact" class="btp">Me contacter <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    <a href="#projects-uni" class="bto">Voir mes projets</a>
   </div>
-  <div class="hscroll"><span class="sline"></span><span data-fr="Défiler pour explorer" data-en="Scroll to explore">Défiler pour explorer</span></div>
+  <div class="hscroll"><span class="sline"></span>Défiler pour explorer</div>
 </section>
 
 <!-- SKILLS -->
 <section id="skills">
   <div class="reveal">
-    <div class="slabel" data-fr="Compétences" data-en="Skills">Compétences</div>
-    <h2 class="stitle" data-fr="Ce que je maîtrise" data-en="What I master">Ce que je maîtrise</h2>
-    <p class="sdesc" data-fr="Socle technique orienté réseau, sécurité, développement et télécoms." data-en="Technical foundation in networking, security, development and telecoms.">Socle technique orienté réseau, sécurité, développement et télécoms.</p>
+    <div class="slabel">Compétences</div>
+    <h2 class="stitle">Ce que je maîtrise</h2>
+    <p class="sdesc">Socle technique orienté réseau, sécurité, développement et télécoms.</p>
   </div>
   <div class="skgrid">
-    <div class="skcard reveal"><div class="skico b">🛡️</div><h3 data-fr="Cybersécurité" data-en="Cybersecurity">Cybersécurité</h3><div class="tlist"><span class="tag">Hygiène informatique</span><span class="tag">Audit de sécurité</span><span class="tag">Pentesting</span><span class="tag">Wireshark</span><span class="tag">ACL / IDS / IPS</span><span class="tag">WatchGuard Firebox</span></div></div>
-    <div class="skcard reveal"><div class="skico g">🌐</div><h3 data-fr="Réseaux &amp; Systèmes" data-en="Networks &amp; Systems">Réseaux &amp; Systèmes</h3><div class="tlist"><span class="tag">VLAN</span><span class="tag">Routage</span><span class="tag">DHCP / DNS</span><span class="tag">Windows &amp; Linux</span><span class="tag">VMware / VirtualBox</span><span class="tag">Cisco Packet Tracer</span><span class="tag">GNS3</span><span class="tag">Active Directory</span></div></div>
-    <div class="skcard reveal"><div class="skico o">💻</div><h3 data-fr="Programmation &amp; Dev" data-en="Programming &amp; Dev">Programmation &amp; Dev</h3><div class="tlist"><span class="tag">Python</span><span class="tag">Java</span><span class="tag">C++</span><span class="tag">Bash</span><span class="tag">HTML / CSS</span><span class="tag">JavaScript</span><span class="tag">SQL</span><span class="tag">Arduino</span></div></div>
-    <div class="skcard reveal"><div class="skico p">📡</div><h3 data-fr="Télécommunications" data-en="Telecommunications">Télécommunications</h3><div class="tlist"><span class="tag">Fibre optique</span><span class="tag">VoIP / SIP</span><span class="tag">Architecture PBX</span><span class="tag">Routeurs fibre/4G</span><span class="tag">GNU Radio</span><span class="tag">Microsoft Azure</span><span class="tag">IoT</span></div></div>
+    <div class="skcard reveal"><div class="skico b">🛡️</div><h3>Cybersécurité</h3><div class="tlist"><span class="tag">Hygiène informatique</span><span class="tag">Audit de sécurité</span><span class="tag">Pentesting</span><span class="tag">Wireshark</span><span class="tag">ACL / IDS / IPS</span><span class="tag">WatchGuard Firebox</span></div></div>
+    <div class="skcard reveal"><div class="skico g">🌐</div><h3>Réseaux &amp; Systèmes</h3><div class="tlist"><span class="tag">VLAN</span><span class="tag">Routage</span><span class="tag">DHCP / DNS</span><span class="tag">Windows &amp; Linux</span><span class="tag">VMware / VirtualBox</span><span class="tag">Cisco Packet Tracer</span><span class="tag">GNS3</span><span class="tag">Active Directory</span></div></div>
+    <div class="skcard reveal"><div class="skico o">💻</div><h3>Programmation &amp; Dev</h3><div class="tlist"><span class="tag">Python</span><span class="tag">Java</span><span class="tag">C++</span><span class="tag">Bash</span><span class="tag">HTML / CSS</span><span class="tag">JavaScript</span><span class="tag">SQL</span><span class="tag">Arduino</span></div></div>
+    <div class="skcard reveal"><div class="skico p">📡</div><h3>Télécommunications</h3><div class="tlist"><span class="tag">Fibre optique</span><span class="tag">VoIP / SIP</span><span class="tag">Architecture PBX</span><span class="tag">Routeurs fibre/4G</span><span class="tag">GNU Radio</span><span class="tag">Microsoft Azure</span><span class="tag">IoT</span></div></div>
   </div>
 </section>
 
@@ -350,14 +363,14 @@ footer{background:var(--bg2);border-top:1px solid var(--border);text-align:cente
 <section id="projects-uni" style="background:var(--surface);max-width:none;padding:100px 48px">
   <div style="max-width:1200px;margin:0 auto">
     <div class="reveal">
-      <div class="slabel" data-fr="Projets académiques" data-en="Academic projects">Projets académiques</div>
-      <h2 class="stitle" data-fr="Projets universitaires" data-en="University projects">Projets universitaires</h2>
-      <p class="sdesc" data-fr="Réalisations concrètes menées à l'IUT de Valence." data-en="Concrete achievements at IUT Valence.">Réalisations concrètes menées à l'IUT de Valence.</p>
+      <div class="slabel">Projets académiques</div>
+      <h2 class="stitle">Projets universitaires</h2>
+      <p class="sdesc">Réalisations concrètes menées à l'IUT de Valence.</p>
     </div>
     <div class="upgrid">
-      <div class="upcard reveal"><div class="uphead"><div class="upnum">01</div><div class="upico">🏢</div></div><h3 data-fr="Réseau d'entreprise sécurisé" data-en="Secure enterprise network">Réseau d'entreprise sécurisé</h3><p data-fr="Conception et déploiement d'une infrastructure réseau complète avec Cisco Packet Tracer et GNS3. Segmentation VLANs, services DHCP, DNS, FTP, NTP et documentation LAN/WAN." data-en="Design and deployment of a complete network infrastructure with Cisco Packet Tracer and GNS3. VLAN segmentation, DHCP, DNS, FTP, NTP services and LAN/WAN documentation.">Conception et déploiement d'une infrastructure réseau complète avec Cisco Packet Tracer et GNS3. Segmentation VLANs, services DHCP, DNS, FTP, NTP et documentation LAN/WAN.</p><div class="tlist"><span class="tag">Cisco Packet Tracer</span><span class="tag">GNS3</span><span class="tag">VLAN</span><span class="tag">DHCP/DNS</span></div></div>
-      <div class="upcard reveal"><div class="uphead"><div class="upnum">02</div><div class="upico">🔒</div></div><h3 data-fr="Sécurisation d'infrastructures" data-en="Infrastructure security">Sécurisation d'infrastructures</h3><p data-fr="Configuration de pare-feu matériels WatchGuard Firebox, déploiement de stratégies ACL et IDS/IPS, supervision du trafic avec Wireshark et administration Active Directory." data-en="WatchGuard Firebox hardware firewall configuration, ACL and IDS/IPS strategies, Wireshark traffic monitoring and Active Directory administration.">Configuration de pare-feu matériels WatchGuard Firebox, déploiement de stratégies ACL et IDS/IPS, supervision du trafic avec Wireshark et administration Active Directory.</p><div class="tlist"><span class="tag">WatchGuard</span><span class="tag">Wireshark</span><span class="tag">IDS/IPS</span><span class="tag">Active Directory</span></div></div>
-      <div class="upcard reveal"><div class="uphead"><div class="upnum">03</div><div class="upico">🤖</div></div><h3 data-fr="Objet connecté IoT" data-en="Connected IoT device">Objet connecté IoT</h3><p data-fr="Dispositif connecté avec capteur Arduino et interface Java. Serveur de collecte avec base de données MySQL pour enregistrer et visualiser les données capteurs en temps réel." data-en="Connected device with Arduino sensor and Java interface. Collection server with MySQL database to record and visualise sensor data in real time.">Dispositif connecté avec capteur Arduino et interface Java. Serveur de collecte avec base de données MySQL pour enregistrer et visualiser les données capteurs en temps réel.</p><div class="tlist"><span class="tag">Arduino</span><span class="tag">Java</span><span class="tag">MySQL</span><span class="tag">IoT</span></div></div>
+      <div class="upcard reveal"><div class="uphead"><div class="upnum">01</div><div class="upico">🏢</div></div><h3>Réseau d'entreprise sécurisé</h3><p>Conception et déploiement d'une infrastructure réseau complète avec Cisco Packet Tracer et GNS3. Segmentation VLANs, services DHCP, DNS, FTP, NTP et documentation LAN/WAN.</p><div class="tlist"><span class="tag">Cisco Packet Tracer</span><span class="tag">GNS3</span><span class="tag">VLAN</span><span class="tag">DHCP/DNS</span></div></div>
+      <div class="upcard reveal"><div class="uphead"><div class="upnum">02</div><div class="upico">🔒</div></div><h3>Sécurisation d'infrastructures</h3><p>Configuration de pare-feu matériels WatchGuard Firebox, déploiement de stratégies ACL et IDS/IPS, supervision du trafic avec Wireshark et administration Active Directory.</p><div class="tlist"><span class="tag">WatchGuard</span><span class="tag">Wireshark</span><span class="tag">IDS/IPS</span><span class="tag">Active Directory</span></div></div>
+      <div class="upcard reveal"><div class="uphead"><div class="upnum">03</div><div class="upico">🤖</div></div><h3>Objet connecté IoT</h3><p>Dispositif connecté avec capteur Arduino et interface Java. Serveur de collecte avec base de données MySQL pour enregistrer et visualiser les données capteurs en temps réel.</p><div class="tlist"><span class="tag">Arduino</span><span class="tag">Java</span><span class="tag">MySQL</span><span class="tag">IoT</span></div></div>
     </div>
   </div>
 </section>
@@ -365,39 +378,39 @@ footer{background:var(--bg2);border-top:1px solid var(--border);text-align:cente
 <!-- PROJETS PERSONNELS -->
 <section id="projects-perso">
   <div class="reveal">
-    <div class="slabel" data-fr="Projets personnels" data-en="Personal projects">Projets personnels</div>
-    <h2 class="stitle" data-fr="Lab personnel &amp; Bidouilles" data-en="Personal lab &amp; Tinkering">Lab personnel &amp; Bidouilles</h2>
-    <p class="sdesc" data-fr="Des projets perso qui traduisent ma curiosité technique au quotidien." data-en="Side projects that reflect my daily technical curiosity.">Des projets perso qui traduisent ma curiosité technique au quotidien.</p>
+    <div class="slabel">Projets personnels</div>
+    <h2 class="stitle">Lab personnel &amp; Bidouilles</h2>
+    <p class="sdesc">Des projets perso qui traduisent ma curiosité technique au quotidien.</p>
   </div>
   <div class="ppgrid">
 
     <div class="ppcard reveal">
-      <div class="pphead"><div class="ppico b">🎬</div><div><h3 data-fr="Serveur Jellyfin" data-en="Jellyfin Server">Serveur Jellyfin</h3></div></div>
-      <p data-fr="Déploiement d'un serveur multimédia Jellyfin self-hosted sur un ancien PC. Gestion des bibliothèques, transcoding, accès distant sécurisé via reverse proxy." data-en="Self-hosted Jellyfin media server deployed on an old PC. Library management, transcoding, secure remote access via reverse proxy.">Déploiement d'un serveur multimédia Jellyfin self-hosted sur un ancien PC. Gestion des bibliothèques, transcoding, accès distant sécurisé via reverse proxy.</p>
+      <div class="pphead"><div class="ppico b">🎬</div><div><h3>Serveur Jellyfin</h3></div></div>
+      <p>Déploiement d'un serveur multimédia Jellyfin self-hosted sur un ancien PC. Gestion des bibliothèques, transcoding, accès distant sécurisé via reverse proxy.</p>
       <div class="pptags"><span class="tag">Linux</span><span class="tag">Jellyfin</span><span class="tag">Self-hosted</span><span class="tag">Nginx</span></div>
     </div>
 
     <div class="ppcard reveal">
-      <div class="pphead"><div class="ppico g">💻</div><div><h3 data-fr="Upgrade ThinkPad T480s" data-en="ThinkPad T480s Upgrade">Upgrade ThinkPad T480s</h3></div></div>
-      <p data-fr="Refonte matérielle complète : remplacement de la RAM, SSD NVMe, batterie interne. Installation dual-boot Linux / Windows, optimisation BIOS et performances." data-en="Full hardware overhaul: RAM, NVMe SSD, internal battery replacement. Dual-boot Linux / Windows setup, BIOS and performance optimisation.">Refonte matérielle complète : remplacement de la RAM, SSD NVMe, batterie interne. Installation dual-boot Linux / Windows, optimisation BIOS et performances.</p>
+      <div class="pphead"><div class="ppico g">💻</div><div><h3>Upgrade ThinkPad T480s</h3></div></div>
+      <p>Refonte matérielle complète : remplacement de la RAM, SSD NVMe, batterie interne. Installation dual-boot Linux / Windows, optimisation BIOS et performances.</p>
       <div class="pptags"><span class="tag">Hardware</span><span class="tag">Linux Mint</span><span class="tag">Dual-boot</span><span class="tag">BIOS</span></div>
     </div>
 
     <div class="ppcard reveal">
-      <div class="pphead"><div class="ppico o">📹</div><div><h3 data-fr="Serveur NVR sur Linux Mint" data-en="NVR Server on Linux Mint">Serveur NVR sur Linux Mint</h3></div></div>
-      <p data-fr="Ancien PC recyclé en serveur d'enregistrement vidéo sous Linux Mint. Intégration de caméras extérieures TAPO, scripts de capture et stockage local des flux RTSP." data-en="Old PC repurposed as a video recording server on Linux Mint. TAPO outdoor camera integration, capture scripts and local RTSP stream storage.">Ancien PC recyclé en serveur d'enregistrement vidéo sous Linux Mint. Intégration de caméras extérieures TAPO, scripts de capture et stockage local des flux RTSP.</p>
+      <div class="pphead"><div class="ppico o">📹</div><div><h3>Serveur NVR sur Linux Mint</h3></div></div>
+      <p>Ancien PC recyclé en serveur d'enregistrement vidéo sous Linux Mint. Intégration de caméras extérieures TAPO, scripts de capture et stockage local des flux RTSP.</p>
       <div class="pptags"><span class="tag">Linux Mint</span><span class="tag">TAPO</span><span class="tag">RTSP</span><span class="tag">Bash</span><span class="tag">CCTV</span></div>
     </div>
 
     <div class="ppcard reveal">
-      <div class="pphead"><div class="ppico r">⚡</div><div><h3 data-fr="BadUSB Cookie Stealer" data-en="BadUSB Cookie Stealer">BadUSB Cookie Stealer</h3></div></div>
-      <p data-fr="Proof-of-concept éducatif : Arduino Nano programmé en HID pour démontrer les risques des supports USB inconnus. Extraction de cookies de session dans un environnement de test isolé." data-en="Educational proof-of-concept: Arduino Nano programmed as HID to demonstrate unknown USB risks. Session cookie extraction in an isolated test environment.">Proof-of-concept éducatif : Arduino Nano programmé en HID pour démontrer les risques des supports USB inconnus. Extraction de cookies de session dans un environnement de test isolé.</p>
+      <div class="pphead"><div class="ppico r">⚡</div><div><h3>BadUSB Cookie Stealer</h3></div></div>
+      <p>Proof-of-concept éducatif : Arduino Nano programmé en HID pour démontrer les risques des supports USB inconnus. Extraction de cookies de session dans un environnement de test isolé.</p>
       <div class="pptags"><span class="tag">Arduino Nano</span><span class="tag">HID Attack</span><span class="tag">Pentest</span><span class="tag">PoC</span><span class="warn-tag">⚠️ Éducatif uniquement</span></div>
     </div>
 
     <div class="ppcard reveal">
-      <div class="pphead"><div class="ppico p">📱</div><div><h3 data-fr="App Android Développement perso" data-en="Android Personal Development App">App Android Développement perso</h3></div></div>
-      <p data-fr="Application mobile nocode de développement personnel combinant méditation guidée, journaling quotidien et suivi des tâches accomplies. Interface minimaliste et intuitive." data-en="No-code mobile app for personal development combining guided meditation, daily journaling and task tracking. Minimalist and intuitive interface.">Application mobile nocode de développement personnel combinant méditation guidée, journaling quotidien et suivi des tâches accomplies. Interface minimaliste et intuitive.</p>
+      <div class="pphead"><div class="ppico p">📱</div><div><h3>App Android Développement perso</h3></div></div>
+      <p>Application mobile nocode de développement personnel combinant méditation guidée, journaling quotidien et suivi des tâches accomplies. Interface minimaliste et intuitive.</p>
       <div class="pptags"><span class="tag">No-code</span><span class="tag">Android</span><span class="tag">Productivité</span><span class="tag">UX</span></div>
     </div>
 
@@ -408,9 +421,9 @@ footer{background:var(--bg2);border-top:1px solid var(--border);text-align:cente
 <section id="experience" style="background:var(--surface);max-width:none;padding:100px 48px">
   <div style="max-width:900px;margin:0 auto">
     <div class="reveal">
-      <div class="slabel" data-fr="Parcours" data-en="Journey">Parcours</div>
-      <h2 class="stitle" data-fr="Ma route professionnelle" data-en="My professional road">Ma route professionnelle</h2>
-      <p class="sdesc" data-fr="De la classe prépa à mon premier stage en entreprise tech." data-en="From prep class to my first tech internship.">De la classe prépa à mon premier stage en entreprise tech.</p>
+      <div class="slabel">Parcours</div>
+      <h2 class="stitle">Ma route professionnelle</h2>
+      <p class="sdesc">De la classe prépa à mon premier stage en entreprise tech.</p>
     </div>
 
     <div class="roadmap">
@@ -420,7 +433,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);text-align:cente
         <div class="rm-dot"></div>
         <div class="rm-date">Mars – Juin 2026 · En cours</div>
         <div class="rm-card">
-          <h3 data-fr="Technicien Réseaux &amp; Télécoms — Stage" data-en="Network &amp; Telecoms Technician — Internship">Technicien Réseaux &amp; Télécoms — Stage</h3>
+          <h3>Technicien Réseaux &amp; Télécoms — Stage</h3>
           <div class="rm-company">
             <img src="https://amgcom.fr/wp-content/uploads/2021/06/cropped-logo-amgcom-192x192.png" alt="AMGCOM" onerror="this.style.display='none'">
             AMGCOM — Guilherand-Granges (07)
@@ -433,7 +446,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);text-align:cente
             <li>Support technique à l'équipe et suivi des dossiers en cours</li>
             <li>Rédaction des comptes rendus d'intervention</li>
           </ul>
-          <span class="rm-badge" data-fr="🚀 Stage actuel · 12 semaines" data-en="🚀 Current internship · 12 weeks">🚀 Stage actuel · 12 semaines</span>
+          <span class="rm-badge">🚀 Stage actuel · 12 semaines</span>
         </div>
       </div>
 
@@ -442,7 +455,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);text-align:cente
         <div class="rm-dot"></div>
         <div class="rm-date">Juillet – Août 2025</div>
         <div class="rm-card">
-          <h3 data-fr="Opérateur Véhicules Neufs" data-en="New Vehicle Operator">Opérateur Véhicules Neufs</h3>
+          <h3>Opérateur Véhicules Neufs</h3>
           <div class="rm-company">🏎️ Renault Dacia — Groupe Bernard, Bourg-en-Bresse</div>
           <ul class="rm-pts">
             <li>Suivi du planning de livraisons et préparation des véhicules</li>
@@ -457,7 +470,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);text-align:cente
         <div class="rm-dot"></div>
         <div class="rm-date">2025 – Présent</div>
         <div class="rm-card">
-          <h3 data-fr="BUT Réseaux &amp; Télécommunications — Cybersécurité" data-en="B.Sc. Network &amp; Telecommunications — Cybersecurity">BUT Réseaux &amp; Télécommunications — Cybersécurité</h3>
+          <h3>BUT Réseaux &amp; Télécommunications — Cybersécurité</h3>
           <div class="rm-company">🎓 IUT de Valence — Université Grenoble Alpes</div>
           <ul class="rm-pts">
             <li>Projets réseau : infrastructure d'entreprise, sécurisation, IoT</li>
@@ -472,7 +485,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);text-align:cente
         <div class="rm-dot"></div>
         <div class="rm-date">2021 – 2024</div>
         <div class="rm-card">
-          <h3 data-fr="Baccalauréat &amp; Formation générale" data-en="High School Diploma">Baccalauréat</h3>
+          <h3>Baccalauréat</h3>
           <div class="rm-company">🏫 Lycée Joseph-Marie Carriat — Bourg-en-Bresse</div>
           <ul class="rm-pts">
             <li>Développement d'une passion pour la technologie, les réseaux et la cybersécurité</li>
@@ -487,9 +500,9 @@ footer{background:var(--bg2);border-top:1px solid var(--border);text-align:cente
 <!-- CERTIFICATIONS -->
 <section id="certifications">
   <div class="reveal">
-    <div class="slabel" data-fr="Certifications" data-en="Certifications">Certifications</div>
-    <h2 class="stitle" data-fr="Formations &amp; certifications" data-en="Training &amp; certifications">Formations &amp; certifications</h2>
-    <p class="sdesc" data-fr="Des certifications officielles qui valident mes compétences." data-en="Official certifications validating my skills.">Des certifications officielles qui valident mes compétences.</p>
+    <div class="slabel">Certifications</div>
+    <h2 class="stitle">Formations &amp; certifications</h2>
+    <p class="sdesc">Des certifications officielles qui valident mes compétences.</p>
   </div>
   <div class="cgrid">
 
@@ -540,9 +553,9 @@ footer{background:var(--bg2);border-top:1px solid var(--border);text-align:cente
 <section id="github" style="background:var(--surface);max-width:none;padding:100px 48px">
   <div style="max-width:1200px;margin:0 auto">
     <div class="reveal">
-      <div class="slabel" data-fr="Open Source" data-en="Open Source">Open Source</div>
-      <h2 class="stitle" data-fr="Repos GitHub favoris" data-en="Favourite GitHub repos">Repos GitHub favoris</h2>
-      <p class="sdesc" data-fr="Des projets open source que j'utilise et que je suis de près." data-en="Open source projects I use and follow closely.">Des projets open source que j'utilise, que j'approuve et que je suis de près.</p>
+      <div class="slabel">Open Source</div>
+      <h2 class="stitle">Repos GitHub favoris</h2>
+      <p class="sdesc">Des projets open source que j'utilise, que j'approuve et que je suis de près.</p>
     </div>
     <div class="ghgrid">
 
@@ -589,17 +602,17 @@ footer{background:var(--bg2);border-top:1px solid var(--border);text-align:cente
 <!-- CONTACT -->
 <section id="contact">
   <div class="reveal">
-    <div class="slabel" data-fr="Contact" data-en="Contact">Contact</div>
-    <h2 class="stitle" data-fr="Travaillons ensemble" data-en="Let's work together">Travaillons ensemble</h2>
-    <p class="sdesc" data-fr="Stage en cours chez AMGCOM. N'hésitez pas à me contacter pour la suite !" data-en="Currently on internship at AMGCOM. Feel free to reach out!">Stage en cours chez AMGCOM. N'hésitez pas à me contacter pour la suite !</p>
+    <div class="slabel">Contact</div>
+    <h2 class="stitle">Travaillons ensemble</h2>
+    <p class="sdesc">Stage en cours chez AMGCOM. N'hésitez pas à me contacter pour la suite !</p>
   </div>
   <div class="cgrid2">
     <div class="cinfo2 reveal">
-      <a href="/cdn-cgi/l/email-protection#b5ccd4dbdcc69bd9d4d8d0d6ddd0f5dac0c1d9dadade9bd3c7" class="clink"><span class="clico">✉️</span><span class="__cf_email__" data-cfemail="78011916110b561419151d1b101d38170d0c14171713561e0a">[email&#160;protected]</span></a>
+      <a href="/cdn-cgi/l/email-protection#bcc5ddd2d5cf92d0ddd1d9dfd4d9fcd3c9c8d0d3d3d792dace" class="clink"><span class="clico">✉️</span><span class="__cf_email__" data-cfemail="0e776f60677d20626f636b6d666b4e617b7a6261616520687c">[email&#160;protected]</span></a>
       <a href="https://www.linkedin.com/in/yanis-lameche" target="_blank" class="clink"><span class="clico">💼</span>linkedin.com/in/yanis-lameche</a>
       <span class="clink"><span class="clico">📍</span>Bourg-en-Bresse (01) / Valence (26)</span>
       <div style="margin-top:16px;padding:20px;background:rgba(0,198,162,.07);border:1px solid rgba(0,198,162,.2);border-radius:14px">
-        <p style="font-size:.75rem;color:var(--accent2);margin-bottom:6px;text-transform:uppercase;letter-spacing:1px;font-weight:600" data-fr="Stage actuel" data-en="Current internship">Stage actuel</p>
+        <p style="font-size:.75rem;color:var(--accent2);margin-bottom:6px;text-transform:uppercase;letter-spacing:1px;font-weight:600">Stage actuel</p>
         <p style="color:var(--text);font-size:.92rem"><strong>AMGCOM</strong> — Technicien Télécoms<br><span style="color:var(--text2);font-size:.85rem">381 Rue Blaise Pascal, 07500 Guilherand-Granges<br>16 mars → 5 juin 2026</span></p>
       </div>
     </div>
@@ -615,11 +628,11 @@ footer{background:var(--bg2);border-top:1px solid var(--border);text-align:cente
       <form class="cform" id="cForm" action="https://formspree.io/f/xojkgpga" method="POST">
         <input type="hidden" name="_subject" value="📬 Message portfolio — Yanis LAMECHE">
         <div class="frow">
-          <input class="ff" type="text"  name="name"    placeholder="Votre nom" data-fr="Votre nom" data-en="Your name"   required>
-          <input class="ff" type="email" name="email"   placeholder="Votre email" data-fr="Votre email" data-en="Your email" required>
+          <input class="ff" type="text"  name="name"    placeholder="Votre nom"   required>
+          <input class="ff" type="email" name="email"   placeholder="Votre email" required>
         </div>
-        <input  class="ff" type="text"    name="subject" placeholder="Objet..." data-fr="Objet..." data-en="Subject...">
-        <textarea class="ff" name="message" placeholder="Votre message..." data-fr="Votre message..." data-en="Your message..." required></textarea>
+        <input  class="ff" type="text"    name="subject" placeholder="Objet...">
+        <textarea class="ff" name="message" placeholder="Votre message..." required></textarea>
         <button type="submit" class="bsend" id="sBtn">Envoyer <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
         <div class="fsuc" id="fSuc">✅ &nbsp;Message envoyé ! Je vous répondrai dès que possible.</div>
         <p class="fnotice">🔒 Sécurisé via Formspree — aucun serveur requis</p>
@@ -631,23 +644,19 @@ footer{background:var(--bg2);border-top:1px solid var(--border);text-align:cente
 <footer>
   <div class="footer-links">
     <a href="https://iut-valence.fr" target="_blank">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-      IUT de Valence
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>IUT de Valence
     </a>
     <a href="https://www.univ-grenoble-alpes.fr" target="_blank">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-      Université Grenoble Alpes
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>Université Grenoble Alpes
     </a>
     <a href="https://amgcom.fr" target="_blank">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-      AMGCOM
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>AMGCOM
     </a>
     <a href="https://www.linkedin.com/in/yanis-lameche" target="_blank">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-      LinkedIn
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn
     </a>
   </div>
-  <p data-fr="© 2026 Yanis LAMECHE — BUT R&amp;T Cybersécurité · IUT de Valence · Université Grenoble Alpes" data-en="© 2026 Yanis LAMECHE — B.Sc. Network &amp; Telecoms · IUT Valence · Grenoble Alpes University">© 2026 Yanis LAMECHE — BUT R&amp;T Cybersécurité · IUT de Valence · Université Grenoble Alpes</p>
+  <p>© 2026 Yanis LAMECHE — BUT R&amp;T Cybersécurité · IUT de Valence · Université Grenoble Alpes</p>
 </footer>
 </div><!-- /main -->
 
@@ -724,7 +733,6 @@ window.addEventListener('scroll',()=>{
   nls.forEach(a=>{a.style.color=a.getAttribute('href')==='#'+cur?'var(--text)':'';});
 });
 
-
 /* ════════ FORMSPREE ════════ */
 const form=document.getElementById('cForm'),btn=document.getElementById('sBtn'),ok=document.getElementById('fSuc');
 form.addEventListener('submit',async e=>{
@@ -742,62 +750,49 @@ function toggleTheme(){
   const icon=document.getElementById('themeIcon');
   if(isLight){
     icon.innerHTML='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
-  } else {
+  }else{
     icon.innerHTML='<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
   }
   localStorage.setItem('theme',isLight?'light':'dark');
 }
 
-/* ════════ LANG TOGGLE — traduction complète ════════ */
-/* Chaque élément traduit porte un attribut data-fr="..." data-en="..." */
-let currentLang='fr';
+/* ════════ GOOGLE TRANSLATE ════════ */
+let gtReady=false;
+let currentLangIsEn=false;
 
-function applyTranslation(lang){
-  currentLang=lang;
-  // Tous les éléments avec data-fr / data-en
-  document.querySelectorAll('[data-fr]').forEach(el=>{
-    const val = lang==='fr' ? el.dataset.fr : el.dataset.en;
-    if(val===undefined) return;
-    // Si l'élément contient du HTML (balises), utiliser innerHTML
-    if(val.includes('<')) el.innerHTML=val;
-    else el.textContent=val;
-  });
-  // Bouton langue
-  document.getElementById('langLabel').textContent=lang==='fr'?'EN':'FR';
-  // html lang attr
-  document.documentElement.lang=lang;
-  // Sauvegarder
-  localStorage.setItem('lang',lang);
+function googleTranslateElementInit(){
+  new google.translate.TranslateElement({
+    pageLanguage:'fr',
+    includedLanguages:'en',
+    autoDisplay:false
+  },'google_translate_element');
+  gtReady=true;
 }
 
-function toggleLang(){
-  applyTranslation(currentLang==='fr'?'en':'fr');
+function triggerTranslate(){
+  if(!gtReady){alert('Traducteur non chargé, réessayez dans 2s.');return;}
+  currentLangIsEn=!currentLangIsEn;
+  document.getElementById('gtLabel').textContent=currentLangIsEn?'FR':'EN';
+  if(currentLangIsEn){
+    // Sélectionner "English" dans le select de Google Translate
+    const sel=document.querySelector('.goog-te-combo');
+    if(sel){sel.value='en';sel.dispatchEvent(new Event('change'));}
+  }else{
+    // Retour au français via le lien "Afficher l'original"
+    const restore=document.querySelector('.goog-te-banner-frame');
+    if(restore){restore.contentDocument.querySelector('#:0.restore')?.click();}
+    // Méthode alternative : cookie reset
+    const ck=document.cookie.split(';').find(c=>c.trim().startsWith('googtrans'));
+    if(ck){document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';}
+    location.reload();
+  }
 }
-
-/* Restaurer langue sauvegardée */
-/* handle placeholder translation */
-function translatePlaceholders(lang){
-  document.querySelectorAll('[data-fr]').forEach(el=>{
-    if(el.tagName==='INPUT'||el.tagName==='TEXTAREA'){
-      const val=lang==='fr'?el.dataset.fr:el.dataset.en;
-      if(val) el.placeholder=val;
-    }
-  });
-}
-const _origApply=applyTranslation;
-function applyTranslation(lang){
-  _origApply(lang);
-  translatePlaceholders(lang);
-}
-
-(function(){
-  const saved=localStorage.getItem('lang');
-  if(saved && saved!=='fr') applyTranslation(saved);
-})();
 
 /* ════════ RESTORE SAVED THEME ════════ */
 (function(){const saved=localStorage.getItem('theme');if(saved==='light')toggleTheme();})();
 
 </script>
+<!-- Google Translate API -->
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
